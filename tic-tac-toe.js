@@ -44,6 +44,7 @@ y = parseInt(p2Response[1]);
 if(p2Response.toString().toLowerCase() === "forfeit") {
     console.log(player2 + " forfeits. " + player1 + " wins!");
     gameOver = true;
+    return;
 }
 
 while(x > 3 || x < 1 || y > 3 || y < 1) {
@@ -52,12 +53,12 @@ while(x > 3 || x < 1 || y > 3 || y < 1) {
     x = parseInt(p2Response[0]);
     y = parseInt(p2Response[1]);
 }
-while(x !== 3 || x !== 2 || x !== 1 || y !== 3 || y !== 2 || y !== 1) {
-    console.log("error Invalid input: you must enter the x and y coordinates separated by spaces");
-    p2Response = prompt().split(" ", 2);
-    x = parseInt(p2Response[0]);
-    y = parseInt(p2Response[1]);
-}
+// while(x !== 3 || x !== 2 || x !== 1 || y !== 3 || y !== 2 || y !== 1) {
+//     console.log("error Invalid input: you must enter the x and y coordinates separated by spaces");
+//     p2Response = prompt().split(" ", 2);
+//     x = parseInt(p2Response[0]);
+//     y = parseInt(p2Response[1]);
+// }
 
 while(board[x-1][y-1]===('X' || 'O')) {
     console.log("Space already taken. Choose again.");
@@ -122,10 +123,15 @@ var p1Response = prompt().split(" ", 2);
 if(p1Response.toString().toLowerCase() === "forfeit") {
     console.log(player1 + " forfeits. " + player2 + " wins!");
     gameOver = true;
+    return;
 }
 
 var x = parseInt(p1Response[0]);
 var y = parseInt(p1Response[1]);
+
+console.log(p1Response);
+console.log(x);
+console.log(y);
 
 while(x > 3 || x < 1 || y > 3 || y < 1) {
     console.log("error Invalid input: those coordinates are outside the playable area");
@@ -133,12 +139,12 @@ while(x > 3 || x < 1 || y > 3 || y < 1) {
     x = parseInt(p1Response[0]);
     y = parseInt(p1Response[1]);
 }
-while(x !== 3 || x !== 2 || x !== 1 || y !== 3 || y !== 2 || y !== 1) {
-    console.log("error Invalid input: you must enter the x and y coordinates separated by spaces");
-    p2Response = prompt().split(" ", 2);
-    x = parseInt(p2Response[0]);
-    y = parseInt(p2Response[1]);
-}
+// while((x !== 3 || x !== 2 || x !== 1) || (y !== 3 || y !== 2 || y !== 1)) {
+//     console.log("error Invalid input: you must enter the x and y coordinates separated by spaces");
+//     p2Response = prompt().split(" ", 2);
+//     x = parseInt(p2Response[0]);
+//     y = parseInt(p2Response[1]);
+// }
 
 while(board[x-1][y-1]===('X' || 'O')) {
     console.log("Space already taken. Choose again.");
@@ -214,7 +220,7 @@ var gameStart = function() {
 	}
 
 var playAgain = function() {
-	console.log("would you like to play again? Yes or no?");
+	console.log("Would you like to play again? Yes or no?");
 	var answer = prompt().toLowerCase();
 	if(answer === "yes") {
 		console.log("Cool.");
@@ -222,9 +228,12 @@ var playAgain = function() {
 	} else {
 		console.log("See ya.");
 		gameOver = true;
+        return;
 	}
 }
-if(gameOver === false){
+if(!gameOver){
 gameStart();
+} else {
+    exit();
 }
 }
