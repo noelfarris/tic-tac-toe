@@ -13,7 +13,7 @@ var board = [
     [" ", " ", " "]
 ];
 
-
+while(gameOver === false) {
 var boardReset = function() {
 	board = [
     [' ', ' ', ' '],
@@ -199,6 +199,8 @@ var playAgain = function() {
 	} else {
 		console.log("See ya.");
 		gameOver = true;
+        exit();
 	}
 }
 gameStart();
+}
