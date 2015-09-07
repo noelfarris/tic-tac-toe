@@ -41,6 +41,10 @@ console.log(player2 + " make your move.");
 var p2Response = prompt().split(" ", 2);
 x = parseInt(p2Response[0]);
 y = parseInt(p2Response[1]);
+if(p2Response.toString().toLowerCase() === "forfeit") {
+    console.log(player2 + " forfeits. " + player1 + " wins!");
+    gameOver = true;
+}
 
 while(x > 3 || x < 1 || y > 3 || y < 1) {
     console.log("error Invalid input: you must enter the x and y coordinates separated by spaces");
@@ -108,8 +112,14 @@ var playerOne = function(){
 console.log(player1 + " make your move.");
 
 var p1Response = prompt().split(" ", 2);
+if(p1Response.toString().toLowerCase() === "forfeit") {
+    console.log(player1 + " forfeits. " + player2 + " wins!");
+    gameOver = true;
+}
+
 var x = parseInt(p1Response[0]);
 var y = parseInt(p1Response[1]);
+
 
 while(x > 3 || x < 1 || y > 3 || y < 1) {
     console.log("error Invalid input: you must enter the x and y coordinates separated by spaces");
